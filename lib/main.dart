@@ -1,5 +1,6 @@
-import 'package:cashking/UI/home_screen.dart';
+import 'package:cashking/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'UI/mainpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cash King',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const HomeScreen(),
+          primarySwatch: Colors.green,
+          scaffoldBackgroundColor: AppColors.bluelite),
+      home: const Homepage(),
     );
   }
 }
