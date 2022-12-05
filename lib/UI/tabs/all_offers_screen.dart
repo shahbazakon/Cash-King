@@ -3,6 +3,8 @@ import 'package:cashking/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 
+import '../offer_details_screen.dart';
+
 class AllOffersScreen extends StatelessWidget {
   const AllOffersScreen({
     Key? key,
@@ -11,124 +13,138 @@ class AllOffersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-          color: const Color.fromRGBO(241, 252, 255, 1),
-          child: Column(children: [
-            SizedBox(
-              height: 50,
-              child: Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                  ),
-                  child: Marquee(
-                    text:
-                        "Rakesh earned 120 from BookMyShow Offers . Sameer earned 120 from BookMyShow Offers .",
-                    style: const TextStyle(
-                      backgroundColor: Color.fromRGBO(229, 229, 229, 1),
-                    ),
-                    scrollAxis: Axis.horizontal,
-                  ),
+      child: Column(children: [
+        SizedBox(
+          height: 50,
+          child: Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 10,
+              ),
+              child: Marquee(
+                text:
+                    "Rakesh earned 120 from BookMyShow Offers . Sameer earned 120 from BookMyShow Offers .",
+                style: const TextStyle(
+                  backgroundColor: Color.fromRGBO(229, 229, 229, 1),
                 ),
+                scrollAxis: Axis.horizontal,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.local_fire_department_outlined,
-                    color: Colors.orange,
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Trending Offers",
-                        style:
-                            TextStyle(color: Color.fromRGBO(124, 124, 124, 1)),
-                      )),
-                ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.local_fire_department_outlined,
+                color: Colors.orange,
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Trending Offers",
+                    style: TextStyle(color: Color.fromRGBO(124, 124, 124, 1)),
+                  )),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10, left: 20),
+          child: SizedBox(
+            height: 200,
+            child: Expanded(
+              child: ListView.builder(
+                itemCount: 1,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Row(
+                    children: [
+                      scrolablecard(
+                          imageUrl: AppAssets.image1,
+                          title: "Alto's Odysseyz",
+                          amount: "Get Rs. 230",
+                          userReview: "4,687 users"),
+                      scrolablecard(
+                          imageUrl: AppAssets.image3,
+                          title: "2 Player Games",
+                          amount: "Get Rs. 100",
+                          userReview: "4,687 users"),
+                    ],
+                  );
+                },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10, left: 20),
-              child: SizedBox(
-                height: 200,
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: 1,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          scrolablecard(
-                              imageUrl: AppAssets.image1,
-                              title: "Alto's Odysseyz",
-                              amount: "Get Rs. 230",
-                              userReview: "4,687 users"),
-                          scrolablecard(
-                              imageUrl: AppAssets.image3,
-                              title: "2 Player Games",
-                              amount: "Get Rs. 100",
-                              userReview: "4,687 users"),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
+          ),
+        ),
+        Row(children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Icon(
+              Icons.app_registration_sharp,
+              color: AppColors.blue,
             ),
-            Row(children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Icon(
-                  Icons.app_registration_sharp,
-                  color: AppColors.blue,
-                ),
-              ),
-              Text(
-                "More Offers",
-                style: TextStyle(fontSize: 16, color: AppColors.greylite),
-              )
-            ]),
-            listtiles(
-                imageUrl: AppAssets.icon1,
-                title: "Alto's Odysseyz",
-                subtitle: "Get Rs. 230",
-                trailing: "4,687 users"),
-            listtiles(
-                imageUrl: AppAssets.icon2,
-                title: "Alto's Odysseyz",
-                subtitle: "Get Rs. 230",
-                trailing: "4,687 users"),
-            listtiles(
-                imageUrl: AppAssets.icon3,
-                title: "Alto's Odysseyz",
-                subtitle: "Get Rs. 230",
-                trailing: "4,687 users"),
-            listtiles(
-                imageUrl: AppAssets.icon4,
-                title: "Alto's Odysseyz",
-                subtitle: "Get Rs. 230",
-                trailing: "4,687 users"),
-          ])),
+          ),
+          Text(
+            "More Offers",
+            style: TextStyle(fontSize: 16, color: AppColors.greylite),
+          )
+        ]),
+        listtiles(
+          imageUrl: AppAssets.icon1,
+          title: "Alto's Odysseyz",
+          subtitle: "Get Rs. 230",
+          trailing: "23,567",
+          borderColor: AppColors.green,
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const OfferDetailsScreen()));
+          },
+        ),
+        listtiles(
+          imageUrl: AppAssets.icon2,
+          title: "Alto's Odysseyz",
+          subtitle: "Get Rs. 230",
+          trailing: "23,567",
+          borderColor: AppColors.purple,
+        ),
+        listtiles(
+          imageUrl: AppAssets.icon3,
+          title: "Alto's Odysseyz",
+          subtitle: "Get Rs. 230",
+          trailing: "23,567",
+          borderColor: AppColors.blue,
+        ),
+        listtiles(
+          imageUrl: AppAssets.icon4,
+          title: "Alto's Odysseyz",
+          subtitle: "Get Rs. 230",
+          trailing: "23,567",
+          borderColor: AppColors.pink,
+        ),
+      ]),
     );
   }
 
-  Widget listtiles(
-      {String? imageUrl,
-      String? title = "",
-      String? subtitle = "",
-      String? trailing = ""}) {
+  Widget listtiles({
+    String? imageUrl,
+    String? title = "",
+    String? subtitle = "",
+    Color? borderColor = Colors.black,
+    String? trailing = "",
+    Function()? onTap,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Card(
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.green.shade300, width: 2),
+          side: BorderSide(color: borderColor!, width: 2),
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: ListTile(
-          onTap: () {},
+          onTap: onTap,
           leading: SizedBox(
               height: 50,
               width: 50,
@@ -141,9 +157,10 @@ class AllOffersScreen extends StatelessWidget {
           ),
           subtitle: Text(
             subtitle!,
-            style: TextStyle(color: Colors.blue),
+            style: const TextStyle(color: Colors.blue),
           ),
-          trailing: Text(trailing!, style: TextStyle(color: Colors.amber)),
+          trailing:
+              Text(trailing!, style: const TextStyle(color: Colors.amber)),
         ),
       ),
     );

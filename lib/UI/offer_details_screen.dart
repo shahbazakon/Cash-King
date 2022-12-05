@@ -1,3 +1,5 @@
+import 'package:cashking/utils/assets_path.dart';
+import 'package:cashking/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class OfferDetailsScreen extends StatefulWidget {
@@ -10,6 +12,14 @@ class OfferDetailsScreen extends StatefulWidget {
 class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: AppColors.blue,
+          title: const Text("offers details"),
+        ),
+      ),
+    );
   }
 }
